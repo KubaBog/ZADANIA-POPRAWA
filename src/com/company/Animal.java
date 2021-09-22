@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.File;
 
-public class Animal {
 public class Animal implements salleable {
     String species;
     Double weight;

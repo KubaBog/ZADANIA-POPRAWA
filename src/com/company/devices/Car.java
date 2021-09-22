@@ -1,9 +1,9 @@
 package com.company.devices;
 import com.company.Human;
+import com.company.creatures.Human;
 import com.company.salleable;
 
 
-public class Car extends Device {
 public class Car extends Device implements salleable {
     public String color;
     public Double mileage;

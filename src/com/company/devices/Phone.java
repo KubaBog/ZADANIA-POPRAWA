@@ -1,8 +1,8 @@
 package com.company.devices;
 import com.company.Human;
+import com.company.creatures.Human;
 import com.company.salleable;
 
-public class Phone extends Device {
 public class Phone extends Device implements salleable {
     final Double screenSize;
     final String operatingSystem;
