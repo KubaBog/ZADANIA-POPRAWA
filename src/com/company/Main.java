@@ -47,5 +47,8 @@ public class Main {
         System.out.println("Auto: " + clio.producer + " " + clio.model);
         me.car = clio;
         System.out.println("Auto Kuby: " + me.car.producer + " " + me.car.model);
+
+        me.setSalary(1000.0);
+        me.getSalary();
     }
 }
