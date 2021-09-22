@@ -17,7 +17,6 @@ public class Human implements salleable {
     public final String lastName;
     public Pet pet;
     public Phone mobilePhone;
-    private Car car;
     public Car[] garage;
     private Double salary;
     public Double cash;
@@ -88,13 +87,15 @@ public class Human implements salleable {
         for (int i = 0; i < garage.length; i++) {
             if (this.garage[i] == null) {
                 this.garage[i] = newCar;
+                newCar.owners.add(this);
+
+                return;
             }
         }
     }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " " + pet + " " + mobilePhone + " " + car + " " + salary;
         return "\nHuman {\n" +
                 "   firstName = '" + firstName + '\'' +
                 ",\n   lastName = '" + lastName + '\'' +
@@ -129,32 +130,10 @@ public class Human implements salleable {
         this.salary = salary;
     }
 
-    public Car getCar() {
-        return this.car;
-    }
 
-    public void setCar(Car car) {
-        if (this.salary > car.value) {
-            System.out.println("Udało ci się kupić samochód!");
-            this.car = car;
-        } else if (this.salary > car.value / 12) {
-            System.out.println("Udało ci się kupić samochód na kredyt!");
-            this.car = car;
-        } else {
-            System.out.println("Nie możesz kupić tego samochodu. Zapisz się na studia, znajdź nową robotę albo idź po podwyżkę.");
-        }
-    }
-
-    public void takeCar() {
-        this.car = null;
-    }
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
         System.out.println("Handel ludźmi jest nielegalny");
     }
 }
-
-
-
-

@@ -2,25 +2,21 @@ package com.company.devices;
 
 import com.company.creatures.Human;
 
+import java.util.LinkedList;
+
 public abstract class Car extends Device {
     public String color;
     public Double mileage;
     public Double value;
     public int horsepower;
+    public LinkedList<Human> owners;
 
     public Car(String producer, String model, int yearOfProduction, double value) {
-        super(producer, model, yearOfProduction);
-        this.value = value;
+    public Car(String producer, String model, int yearOfProduction, double value, Human owner) {
         super(producer, model, yearOfProduction, value);
+        this.owners = new LinkedList<Human>();
+        this.owners.add(owner);
     }
-
-
-
-   /* public String toString() {
-        return producer + " " + model + " " + yearOfProduction + "" +
-                doors + " " + mileage + " " + horsepower + " " + color + " " +
-                engineVolume + " " + value;
-    }*/
 
     @Override
     public void turnOn() {
@@ -52,13 +48,42 @@ public abstract class Car extends Device {
         if (buyer.cash < price) {
             throw new Exception("Kupujący nie ma tylu pieniędzy!");
         }
+        if (this.owners.getLast() != seller) {
+            throw new Exception("Sprzedający nie jest ostatnim właścicielem pojazdu");
+        }
         seller.removeCar(this);
         buyer.addCar(this);
 
         seller.cash += price;
         buyer.cash -= price;
+        this.owners.add(buyer);
 
         System.out.println("Sprzedano!");
+    }
+
+    public boolean wasAnOwner(Human person) {
+        for (Human owner :
+                this.owners) {
+            if (person == owner) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean didAselltoB(Human seller, Human buyer) {
+        for (int i = 0; i < this.owners.size() - 1; i++) {
+            if (this.owners.get(i) == seller) {
+                if (this.owners.get(i + 1) == buyer) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int howManyTransactions() {
+        return this.owners.size() - 1;
     }
 
 }
