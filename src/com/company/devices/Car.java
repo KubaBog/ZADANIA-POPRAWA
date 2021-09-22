@@ -1,7 +1,10 @@
 package com.company.devices;
+import com.company.Human;
+import com.company.salleable;
 
 
 public class Car extends Device {
+public class Car extends Device implements salleable {
     public String color;
     public Double mileage;
     public Double engineVolume;
@@ -46,5 +49,22 @@ public class Car extends Device {
     @Override
     public void turnOn() {
         System.out.println("Samochód jest włączony");
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getCar() != this) {
+            System.out.println("Nie możesz sprzedać kradzionego samochodu");
+        } else if (buyer.cash < price) {
+            System.out.println("Kupujący nie ma tylu pieniędzy");
+        } else if (seller == buyer) {
+            System.out.println("Nie możesz sprzedać samochodu sobie samemu");
+        } else {
+            buyer.cash -= price;
+            seller.cash += price;
+            buyer.setCar(seller.getCar());
+            seller.takeCar();
+            System.out.println("Udało się sprzedać samochód za " + price);
+        }
     }
 }

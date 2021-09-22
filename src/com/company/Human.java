@@ -7,13 +7,15 @@ import java.time.LocalDateTime;
 
 
 public class Human {
+public class Human implements salleable {
     String firstName;
     String lastName;
     Animal pet;
     Phone mobilePhone;
+    public Phone mobilePhone;
     private Car car;
-    private double salary;
     private Double salary;
+    public Double cash;
 
 
     public Double getSalary() {
@@ -52,5 +54,14 @@ public class Human {
         } else {
             System.out.println("Nie możesz kupić tego samochodu. Zapisz się na studia, znajdź nową robotę albo idź po podwyżkę.");
         }
+    }
+
+    public void takeCar() {
+        this.car = null;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        System.out.println("Handel ludźmi jest nielegalny");
     }
 }
