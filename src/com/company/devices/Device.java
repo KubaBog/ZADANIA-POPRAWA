@@ -18,4 +18,5 @@ public abstract class Device {
     public void turnOn() {
         System.out.println("Urządzenie " + producer + " " + model + " włącza się.");
     }
+    public abstract void turnOn();
 }
