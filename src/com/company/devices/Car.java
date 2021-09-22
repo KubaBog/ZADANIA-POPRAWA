@@ -1,10 +1,10 @@
 package com.company.devices;
-import com.company.Human;
 import com.company.creatures.Human;
 import com.company.salleable;
 
 
 public class Car extends Device implements salleable {
+public abstract class Car extends Device {
     public String color;
     public Double mileage;
     public Double engineVolume;
@@ -13,11 +13,16 @@ public class Car extends Device implements salleable {
     public int horsepower;
 
     public Car(String producer, String model, int yearOfProduction, int doors) {
+    public Car(String producer, String model, int yearOfProduction, double value) {
         super(producer, model, yearOfProduction);
         this.doors = doors;
+        this.value = value;
     }
 
     public String toString() {
+
+
+   /* public String toString() {
         return producer + " " + model + " " + yearOfProduction + "" +
                 doors + " " + mileage + " " + horsepower + " " + color + " " +
                 engineVolume + " " + value;
@@ -45,6 +50,7 @@ public class Car extends Device implements salleable {
     public int hashCode() {
         return doors;
     }
+    }*/
 
     @Override
     public void turnOn() {
@@ -67,4 +73,6 @@ public class Car extends Device implements salleable {
             System.out.println("Udało się sprzedać samochód za " + price);
         }
     }
+    public abstract void refuel();
+
 }

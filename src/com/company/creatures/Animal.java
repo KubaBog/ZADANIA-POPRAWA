@@ -11,6 +11,7 @@ public abstract class Animal implements salleable, Feedable {
     public File pic;
 
     public Animal(String species, Double weight, String name, File pic) {
+    protected Animal(String species, Double weight, String name, File pic) {
         this.species = species;
         this.weight = weight;
         this.name = name;
