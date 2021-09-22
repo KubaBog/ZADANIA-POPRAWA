@@ -1,14 +1,20 @@
 package com.company;
+
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.time.LocalDateTime;
+
 
 public class Human {
     String firstName;
     String lastName;
     Animal pet;
     Phone mobilePhone;
-    Car car;
     private Car car;
     private double salary;
+    private Double salary;
+
 
     public Double getSalary() {
         LocalDateTime time = LocalDateTime.now();
